@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsDateString,
   IsNotEmpty,
   IsOptional,
@@ -15,6 +16,10 @@ export class CreateTaskDto implements Task {
   @IsDateString()
   @IsOptional()
   dueDate?: string | Date;
+
+  @IsBoolean()
+  @IsOptional()
+  completed?: boolean;
 
   @IsUUID("4")
   @IsOptional()
