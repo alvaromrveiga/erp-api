@@ -9,6 +9,12 @@ export function prismaExceptionHandler(error: Error, response: Response) {
         if (isEmailConstraintViolation(error.meta)) {
           return response.status(400).json({ error: "Email already in use" });
         }
+
+        if (isDepartmentConstraintViolation(error.meta)) {
+          return response
+            .status(400)
+            .json({ error: "Department name already in use" });
+        }
       default:
         return response.status(400).json({ error });
     }
@@ -25,6 +31,10 @@ export function prismaExceptionHandler(error: Error, response: Response) {
 
 function isEmailConstraintViolation(errorMeta: object): boolean {
   return Object.values(errorMeta)[0][0] === "email";
+}
+
+function isDepartmentConstraintViolation(errorMeta: object): boolean {
+  return Object.values(errorMeta)[0][0] === "department";
 }
 
 export function isPrismaClientUnknownError(error: any) {
