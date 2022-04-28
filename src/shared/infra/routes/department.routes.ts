@@ -7,9 +7,9 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { ensureRoles } from "../middlewares/ensureRoles";
 import { validateRequestBody } from "../middlewares/validateRequestBody";
 
-const departmentRoutes = Router();
+const departmentRouter = Router();
 
-departmentRoutes.post(
+departmentRouter.post(
   "/",
   ensureAuthenticated,
   ensureRoles([Roles.ADMIN]),
@@ -17,10 +17,10 @@ departmentRoutes.post(
   new CreateDepartmentController().handle
 );
 
-departmentRoutes.get(
+departmentRouter.get(
   "/",
   ensureAuthenticated,
   new FindAllDepartmentsController().handle
 );
 
-export { departmentRoutes };
+export { departmentRouter };
