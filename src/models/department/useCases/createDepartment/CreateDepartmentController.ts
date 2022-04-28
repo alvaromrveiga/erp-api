@@ -3,12 +3,14 @@ import { CreateDepartmentService } from "./CreateDepartmentService";
 
 export class CreateDepartmentController {
   async handle(request: Request, response: Response) {
-    const { department } = request.body;
+    const { department: departmentName } = request.body;
 
     const createDepartmentService = new CreateDepartmentService();
 
-    const user = await createDepartmentService.execute({ department });
+    const department = await createDepartmentService.execute({
+      department: departmentName,
+    });
 
-    return response.status(201).json(user);
+    return response.status(201).json(department);
   }
 }
