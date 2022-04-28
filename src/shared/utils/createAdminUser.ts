@@ -1,7 +1,7 @@
 import { Department } from "@prisma/client";
-import { prisma } from "../../prisma/prismaClient";
-import { CreateUserDto } from "../models/user/dtos/CreateUserDto";
-import { CreateUserService } from "../models/user/useCases/createUser/CreateUserService";
+import { prisma } from "../../../prisma/prismaClient";
+import { CreateUserDto } from "../../models/user/dtos/CreateUserDto";
+import { CreateUserService } from "../../models/user/useCases/createUser/CreateUserService";
 
 async function createAdminUser() {
   try {
