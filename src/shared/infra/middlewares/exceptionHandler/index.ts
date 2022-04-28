@@ -21,6 +21,10 @@ export function exceptionHandler(
     return classValidatorExceptionHandler(error, response);
   }
 
+  if (error.message === "Invalid email or password!") {
+    return response.status(400).json({ error: error.message });
+  }
+
   return response.status(500).json({ error: error.message });
 }
 
