@@ -9,6 +9,6 @@ export class FindUserByEmailController {
 
     const user = await findUserByEmailService.execute(email);
 
-    return response.status(201).json(user);
+    return response.status(200).json(user);
   }
 }

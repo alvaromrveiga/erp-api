@@ -17,6 +17,6 @@ export class LoginController {
 
     const user = await loginService.execute(data);
 
-    return response.status(201).json(user);
+    return response.status(200).json(user);
   }
 }
