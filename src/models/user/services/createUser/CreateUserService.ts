@@ -4,7 +4,7 @@ import { hash } from "bcrypt";
 import { UserWithoutPassDto } from "../../dtos/UserWithoutPassDto";
 
 export class CreateUserService {
-  constructor(private userRepository = prisma.user) {}
+  constructor(private usersRepository = prisma.user) {}
 
   async execute(data: CreateUserDto): Promise<UserWithoutPassDto> {
     const passwordHash = await hash(data.password, 10);
@@ -12,7 +12,7 @@ export class CreateUserService {
     data.password = passwordHash;
     data.email = data.email.toLowerCase();
 
-    const user = await this.userRepository.create({
+    const user = await this.usersRepository.create({
       data,
     });
 
