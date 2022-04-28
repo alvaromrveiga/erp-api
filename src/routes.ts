@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import { CreateUserController } from "./models/user/services/createUser/CreateUserController";
-import { FindUserByEmailController } from "./models/user/services/findUserByEmail/FindUserByEmailController";
+import { CreateUserController } from "./models/user/useCases/createUser/CreateUserController";
+import { FindUserByEmailController } from "./models/user/useCases/findUserByEmail/FindUserByEmailController";
 
 const router = Router();
 
