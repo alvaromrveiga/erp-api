@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "dotenv -- node dist/server.js",
+    "start": "dotenv -- node dist/src/shared/infra/server.js",
     "build": "tsc",
     "dev": "dotenv -- ts-node-dev --respawn --transpile-only --ignore-watch node_modules --exit-child src/shared/infra/server.ts",
     "createAdmin": "dotenv -- ts-node-dev src/shared/utils/createAdminUser.ts"
