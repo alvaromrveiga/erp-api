@@ -7,16 +7,12 @@ export class FindUserByIdService {
   async execute(id: string): Promise<UserWithoutPassDto> {
     const user = await this.usersRepository.findUnique({
       where: { id },
+      include: { department: { select: { department: true } } },
       rejectOnNotFound: true,
     });
 
-    return {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-      departmentId: user.departmentId,
-      createdAt: user.createdAt,
-    };
+    delete user.password;
+
+    return user;
   }
 }
