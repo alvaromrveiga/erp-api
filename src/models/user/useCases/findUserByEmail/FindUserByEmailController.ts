@@ -3,7 +3,7 @@ import { FindUserByEmailService } from "./FindUserByEmailService";
 
 export class FindUserByEmailController {
   async handle(request: Request, response: Response) {
-    const { email } = request.body;
+    const { email } = request.params;
 
     const findUserByEmailService = new FindUserByEmailService();
 
