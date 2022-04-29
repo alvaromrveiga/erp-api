@@ -9,7 +9,14 @@ async function createAdminUser() {
 
     const createUserService = new CreateUserService();
 
-    await prisma.user.delete({ where: { email: "admin@example.com" } });
+    const adminUserAlreadyExists = await prisma.user.findUnique({
+      where: { email: "admin@example.com" },
+      rejectOnNotFound: false,
+    });
+
+    if (adminUserAlreadyExists) {
+      await prisma.user.delete({ where: { email: "admin@example.com" } });
+    }
 
     const data = {
       email: "admin@example.com",
